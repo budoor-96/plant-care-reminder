@@ -9,7 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const msg = useSelector((state) => state.user.msg);
+  const { msg, success, loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,10 +20,10 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (msg === "Login successful") {
+    if (success) {
       navigate("/dashboard"); // Redirect to Plant Dashboard
     }
-  }, [msg, navigate]);
+  }, [success, navigate]);
 
   return (
     <Container
@@ -104,7 +104,7 @@ export default function Login() {
                   fontSize: "16px"
                 }}
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </FormGroup>
 
@@ -112,7 +112,14 @@ export default function Login() {
             <FormGroup className="text-center mt-3">
               <Label>
                 Don't have an account?
-                <Link to="/register" style={{ color: "#f8e8e8", fontWeight: "bold", marginLeft: "8px" }}>
+                <Link
+                  to="/register"
+                  style={{
+                    color: "#f8e8e8",
+                    fontWeight: "bold",
+                    marginLeft: "8px"
+                  }}
+                >
                   Sign Up
                 </Link>
               </Label>
@@ -120,11 +127,11 @@ export default function Login() {
           </form>
         </Row>
 
-        {/* Error Message */}
+        {/* Feedback Message */}
         {msg && (
           <Row>
             <Container
-              className="alert alert-danger mt-3"
+              className={`alert mt-3 ${success ? "alert-success" : "alert-danger"}`}
               style={{ borderRadius: "8px", fontWeight: "bold" }}
             >
               <p className="text-center">{msg}</p>
