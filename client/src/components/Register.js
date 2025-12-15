@@ -48,7 +48,7 @@ export default function Register() {
           </Col>
         </Row>
 
-      
+       {/* Inline alert box */}
         {msg && (
           <Row>
             <Container
@@ -135,3 +135,4 @@ export default function Register() {
   );
 
 }
+
