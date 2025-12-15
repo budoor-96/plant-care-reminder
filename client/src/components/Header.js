@@ -25,7 +25,7 @@ export default function Header() {
       }}
     >
       <Container className="d-flex justify-content-between align-items-center">
-        {/* Logo */}
+        
         <Link
           to="/"
           className="d-flex align-items-center"
@@ -40,7 +40,7 @@ export default function Header() {
           PlantCare
         </Link>
 
-        {/* Navigation */}
+        
         <Nav className="ms-auto d-flex align-items-center">
           <Link to="/" style={{ color: "#2e4d2e", marginRight: "15px", textDecoration: "none" }}>Home</Link>
           <Link to="/about" style={{ color: "#2e4d2e", marginRight: "15px", textDecoration: "none" }}>About</Link>
@@ -63,3 +63,4 @@ export default function Header() {
     </Navbar>
   );
 }
+
